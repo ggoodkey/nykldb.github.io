@@ -1,3 +1,3 @@
 # Projects
 
-[NyklDB Docs](./nykldb/0.9.0/index.html)
+[NyklDB Docs](./nykldb/0.9.1/index.html)

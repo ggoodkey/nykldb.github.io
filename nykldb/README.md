@@ -1,12 +1,12 @@
 # <img src="nykldb-logo.png" alt="N" id="nykldb-logo">yklDB Documentation
 
-#### NyklDB Version 0.9.0
+#### NyklDB Version 0.9.1
 
 ##### March 19, 2026
 
 NyklDB is a document-oriented database that stores data as JSON documents. Data in a NyklDB has a [table-like structure](#database-structure), with columns and rows, therefore, any data that you can visualize as a table or spreadsheet can be stored in a NyklDB. 
 
-It is designed to be fast, scaleable and easy to use. NyklDB contains a [basic search engine](#search) that allows you to perform complex searches, and it can execute mathimatical, boolean, and text based [formulas](#formulas) to preform transformations and calculations on your data.
+It is designed to be fast, scalable and easy to use. NyklDB contains a [basic search engine](#search) that allows you to perform complex searches, and it can execute mathematical, boolean, and text based [formulas](#formulas) to preform transformations and calculations on your data.
 
 NyklDB data is also [sortable, filterable](#sort-shuffle-and-filter), [syncable and shareable](#sync-and-share). All data inputs are [validated](#data-validation) according to [data type](#types), and data can be [imported](#importing-data) or exported as JSON documents.
 
@@ -69,7 +69,7 @@ the actual data is written in JSON (Figure 2).
     "created": 3064452,
     "lastModified": 3064455,
     "deleted": false,
-    "version": "0.9.0",
+    "version": "0.9.1",
     "ids": { 
         "AAA": [/* lastModified info */],
         "AAB": [/* lastModified info */],
@@ -108,8 +108,8 @@ the actual data is written in JSON (Figure 2).
 ``` 
 
 NyklDB stores data temporarily in the browser using indexed-db. 
-For more persistant storage, you can export the data from NyklDB as a JSON file and send it to your own cloud 
-solution. Synchronisation is handled client-side when you import that JSON file back into NyklDB.
+For more persistent storage, you can export the data from NyklDB as a JSON file and send it to your own cloud 
+solution. Synchronization is handled client-side when you import that JSON file back into NyklDB.
 
 LZString compression is used so you can fit many MB of data in the very limited indexed-db space that some 
 browsers allow, and reduce bandwidth if you are uploading it to a cloud service provider.
@@ -137,12 +137,12 @@ You can add your own "dictionary" JSON file to refine your search experience. Fo
 
 > ```javascript
 > { 
->   "searchterm": ["equivelent searchterm", "another one"],
+>   "searchterm": ["equivalent searchterm", "another one"],
 >   "something": ["something else"]
 >
 > }
 > ```
-> In this case if you searched for `searchterm`, you would instead get the search results for `equivelent searchterm` and `another one`. If you searched for `something`, you would get search results for `something else`.
+> In this case if you searched for `searchterm`, you would instead get the search results for `equivalent searchterm` and `another one`. If you searched for `something`, you would get search results for `something else`.
 
 All searches are case insensitive; searches are done in lowercase only, therefore the dictionary file need only be 
 in lowercase.
@@ -220,14 +220,14 @@ follow the following rules:
 |JOIN           |               |Join text values together                          |Text1, Text2...      |String |
 |MATCHES        |               |Check whether any of the values equals Value1      |Value1, Value2...    |Boolean|
 |MINUS          |SUBTRACT       |Subtract Num2 from Num1                            |Num1, Num2           |Number |
-|MULTIPLY       |TIMES          |Multply Num1 by Num2                               |Num1, Num2           |Number |
+|MULTIPLY       |TIMES          |Multiply Num1 by Num2                               |Num1, Num2           |Number |
 |OR             |ANY_TRUE       |Check whether any condition is true                |Test1, Test2...      |Boolean|
 |ROUND          |               |Round a Num to Decimals length                     |Num, Decimals        |Number |
 |TO_FRACTION    |FRACTION       |Convert a decimal to a fraction                    |Num                  |String |
 |TO_NUMBER      |               |Convert value to number                            |                     |Number |
 |TO_STRING      |TO_TEXT        |Convert value to text                              |                     |String |
 |TO_LOWERCASE   |               |Convert text to lowercase letters                  |                     |String |
-|TO_TITLECASE   |               |Capitalise text                                    |                     |String |
+|TO_TITLECASE   |               |Capitalize text                                    |                     |String |
 |TO_UPPERCASE   |               |Convert text to all uppercase letters              |                     |String |
 |TRIM           |               |Remove extra spaces from text                      |                     |String |
 |More to come...|               |                                                   |                     |       |
@@ -240,7 +240,7 @@ follow the following rules:
 
 | A note on literal text values     |
 |:---------|
-| If a literal value (in double quotes) contains a double quote symbol, you must escape it (preceed it with a backslash), otherwise it will be interpreted as the end of the literal value and not as part of the text. <br><br>For example: to create `William "The Boss" Smith`, you would do: <br><br>`JOIN($FirstName," \"",$NickName,"\" ",$LastName)`<br><br>or in JavaScript:
+| If a literal value (in double quotes) contains a double quote symbol, you must escape it (precede it with a backslash), otherwise it will be interpreted as the end of the literal value and not as part of the text. <br><br>For example: to create `William "The Boss" Smith`, you would do: <br><br>`JOIN($FirstName," \"",$NickName,"\" ",$LastName)`<br><br>or in JavaScript:
 
 ```JavaScript
 // in single quotes
@@ -269,7 +269,7 @@ The following types can be specified:
 
 * **any** is the default type if no type is specified. Use it if you want to accept input data that could be String, Number, or Boolean values
 * **cityCounty** for a county, city or town name
-* **color** a hex or rgba color string
+* **color** a hexadecimal or RGB color string
 * **country** for a country or nation
 * **email** verifies that the value could be a valid email address
 * **familyName** for a last name
@@ -311,7 +311,7 @@ The following types can be specified:
 * **boolean** accepts only true or false
 * **checkbox** accepts only true or false
 
-> Note: not all types listed are currently fully implementated in this Beta version, specifically uniqueString, password, country, integer, posInteger, negInteger, url, range, and date
+> Note: not all types listed are currently fully implemented in this Beta version, specifically uniqueString, password, country, integer, posInteger, negInteger, url, range, and date
 
 # <a id="getting-started"></a> Getting Started
 
@@ -320,7 +320,7 @@ document, include it as a Javascript module, or run it in a background task in a
 
 ### <a id="javascript-installation"></a> JavaScript Installation
 
-To start using NyklDB using JavaSript, download a copy of `nyklDB.min.js`, `base64.js`, `storage.js`, `Lawnchair.js`, `validate.js` and `unit-convert.js`, and place them in your /scripts folder. Then import NyklDB into your JavaScript project like this:
+To start using NyklDB using JavaScript, download a copy of `nyklDB.min.js`, `base64.js`, `storage.js`, `Lawnchair.js`, `validate.js` and `unit-convert.js`, and place them in your /scripts folder. Then import NyklDB into your JavaScript project like this:
 
 ``` javascript
 import NyklDB from './scripts/nyklDB.min.js';
