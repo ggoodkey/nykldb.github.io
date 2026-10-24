@@ -48,7 +48,7 @@
 <h4>NyklDB Version 0.9.1</h4>
 <h5>March 19, 2026</h5>
 <p>NyklDB is a document-oriented database that stores data as JSON documents. Data in a NyklDB has a <a href="#database-structure">table-like structure</a>, with columns and rows, therefore, any data that you can visualize as a table or spreadsheet can be stored in a NyklDB.</p>
-<p>It is designed to be fast, scalable and easy to use. NyklDB contains a <a href="#search">basic search engine</a> that allows you to perform complex searches, and it can execute mathimatical, boolean, and text based <a href="#formulas">formulas</a> to preform transformations and calculations on your data.</p>
+<p>It is designed to be fast, scalable and easy to use. NyklDB contains a <a href="#search">basic search engine</a> that allows you to perform complex searches, and it can execute mathematical, boolean, and text based <a href="#formulas">formulas</a> to preform transformations and calculations on your data.</p>
 <p>NyklDB data is also <a href="#sort-shuffle-and-filter">sortable, filterable</a>, <a href="#sync-and-share">syncable and shareable</a>. All data inputs are <a href="#data-validation">validated</a> according to <a href="#types">data type</a>, and data can be <a href="#importing-data">imported</a> or exported as JSON documents.</p>
 <h2>Table of Contents</h2>
 <ul>
@@ -144,7 +144,7 @@ the actual data is written in JSON (Figure 2).</p>
     &quot;created&quot;: 3064452,
     &quot;lastModified&quot;: 3064455,
     &quot;deleted&quot;: false,
-    &quot;version&quot;: &quot;0.9.0&quot;,
+    &quot;version&quot;: &quot;0.9.1&quot;,
     &quot;ids&quot;: { 
         &quot;AAA&quot;: [/* lastModified info */],
         &quot;AAB&quot;: [/* lastModified info */],
@@ -182,8 +182,8 @@ the actual data is written in JSON (Figure 2).</p>
 
 </code></pre>
 <p>NyklDB stores data temporarily in the browser using indexed-db.
-For more persistant storage, you can export the data from NyklDB as a JSON file and send it to your own cloud
-solution. Synchronisation is handled client-side when you import that JSON file back into NyklDB.</p>
+For more persistent storage, you can export the data from NyklDB as a JSON file and send it to your own cloud
+solution. Synchronization is handled client-side when you import that JSON file back into NyklDB.</p>
 <p>LZString compression is used so you can fit many MB of data in the very limited indexed-db space that some
 browsers allow, and reduce bandwidth if you are uploading it to a cloud service provider.</p>
 <h1><a id="features"></a> Features</h1>
@@ -201,12 +201,12 @@ Fuzzy matching can be used in some cases to return near matches, for example, co
 <p>You can add your own &quot;dictionary&quot; JSON file to refine your search experience. For example:</p>
 <blockquote>
 <pre class="prettyprint source lang-javascript"><code>{ 
-  &quot;searchterm&quot;: [&quot;equivelent searchterm&quot;, &quot;another one&quot;],
+  &quot;searchterm&quot;: [&quot;equivalent searchterm&quot;, &quot;another one&quot;],
   &quot;something&quot;: [&quot;something else&quot;]
 
 }
 </code></pre>
-<p>In this case if you searched for <code>searchterm</code>, you would instead get the search results for <code>equivelent searchterm</code> and <code>another one</code>. If you searched for <code>something</code>, you would get search results for <code>something else</code>.</p>
+<p>In this case if you searched for <code>searchterm</code>, you would instead get the search results for <code>equivalent searchterm</code> and <code>another one</code>. If you searched for <code>something</code>, you would get search results for <code>something else</code>.</p>
 </blockquote>
 <p>All searches are case insensitive; searches are done in lowercase only, therefore the dictionary file need only be
 in lowercase.</p>
@@ -379,7 +379,7 @@ follow the following rules:</p>
 <tr>
 <td style="text-align:center">MULTIPLY</td>
 <td>TIMES</td>
-<td>Multply Num1 by Num2</td>
+<td>Multiply Num1 by Num2</td>
 <td>Num1, Num2</td>
 <td>Number</td>
 </tr>
@@ -428,7 +428,7 @@ follow the following rules:</p>
 <tr>
 <td style="text-align:center">TO_TITLECASE</td>
 <td></td>
-<td>Capitalise text</td>
+<td>Capitalize text</td>
 <td></td>
 <td>String</td>
 </tr>
@@ -470,7 +470,7 @@ gets the value in column 'LastName', converts it to ALL CAPS, joins it with a &q
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">If a literal value (in double quotes) contains a double quote symbol, you must escape it (preceed it with a backslash), otherwise it will be interpreted as the end of the literal value and not as part of the text. <br><br>For example: to create <code>William &quot;The Boss&quot; Smith</code>, you would do: <br><br><code>JOIN($FirstName,&quot; \&quot;&quot;,$NickName,&quot;\&quot; &quot;,$LastName)</code><br><br>or in JavaScript:</td>
+<td style="text-align:left">If a literal value (in double quotes) contains a double quote symbol, you must escape it (precede it with a backslash), otherwise it will be interpreted as the end of the literal value and not as part of the text. <br><br>For example: to create <code>William &quot;The Boss&quot; Smith</code>, you would do: <br><br><code>JOIN($FirstName,&quot; \&quot;&quot;,$NickName,&quot;\&quot; &quot;,$LastName)</code><br><br>or in JavaScript:</td>
 </tr>
 </tbody>
 </table>
@@ -495,7 +495,7 @@ can use a specific type to indicate what sort of input field to provide to the u
 <ul>
 <li><strong>any</strong> is the default type if no type is specified. Use it if you want to accept input data that could be String, Number, or Boolean values</li>
 <li><strong>cityCounty</strong> for a county, city or town name</li>
-<li><strong>color</strong> a hex or rgba color string</li>
+<li><strong>color</strong> a hexadecimal or RGB color string</li>
 <li><strong>country</strong> for a country or nation</li>
 <li><strong>email</strong> verifies that the value could be a valid email address</li>
 <li><strong>familyName</strong> for a last name</li>
@@ -538,13 +538,13 @@ can use a specific type to indicate what sort of input field to provide to the u
 <li><strong>checkbox</strong> accepts only true or false</li>
 </ul>
 <blockquote>
-<p>Note: not all types listed are currently fully implementated in this Beta version, specifically uniqueString, password, country, integer, posInteger, negInteger, url, range, and date</p>
+<p>Note: not all types listed are currently fully implemented in this Beta version, specifically uniqueString, password, country, integer, posInteger, negInteger, url, range, and date</p>
 </blockquote>
 <h1><a id="getting-started"></a> Getting Started</h1>
 <p>The data store can run along-side your other JavaScript code by adding a &lt;script&gt; tag directly to your HTML
 document, include it as a Javascript module, or run it in a background task in a Web Worker (which is recommended).</p>
 <h3><a id="javascript-installation"></a> JavaScript Installation</h3>
-<p>To start using NyklDB using JavaSript, download a copy of <code>nyklDB.min.js</code>, <code>base64.js</code>, <code>storage.js</code>, <code>Lawnchair.js</code>, <code>validate.js</code> and <code>unit-convert.js</code>, and place them in your /scripts folder. Then import NyklDB into your JavaScript project like this:</p>
+<p>To start using NyklDB using JavaScript, download a copy of <code>nyklDB.min.js</code>, <code>base64.js</code>, <code>storage.js</code>, <code>Lawnchair.js</code>, <code>validate.js</code> and <code>unit-convert.js</code>, and place them in your /scripts folder. Then import NyklDB into your JavaScript project like this:</p>
 <pre class="prettyprint source lang-javascript"><code>import NyklDB from './scripts/nyklDB.min.js';
 </code></pre>
 <h3><a id="setting-up-a-new-nykldb"></a> Setting up a new NyklDB</h3>
@@ -674,7 +674,7 @@ as well, or they will default to the type <code>&quot;any&quot;</code>.</p>
 
 <footer>
     Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a>
-     on 23/9/2026
+     on 23/10/2026
 </footer>
 
 <script> prettyPrint(); </script>
